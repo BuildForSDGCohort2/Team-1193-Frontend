@@ -1,3 +1,12 @@
+body {
+  padding: 0px;
+  margin: 0px;
+}
 .App {
   text-align: center;
+  font-family: Yu Gothic UI;
+}
+a {
+  text-decoration: none;
+  color: rgb(78, 73, 73);
 }
