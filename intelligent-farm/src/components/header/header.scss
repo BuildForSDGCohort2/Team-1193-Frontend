@@ -1,6 +1,7 @@
 .header {
   display: flex;
   justify-content: space-between;
+  height: 70px;
   .logo-container {
     .logo {
       height: 120px;
@@ -32,7 +33,7 @@
 
       &:hover {
         color: rgb(192, 144, 81);
-        animation: pulsate 1s;
+        animation: pulsate 1.5s;
         padding: 3px;
       }
       &:focus {
@@ -47,7 +48,7 @@
         box-shadow: none;
       }
       50% {
-        transform: scale(1.005);
+        transform: scale(1.05);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
       }
 

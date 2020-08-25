@@ -1,0 +1,26 @@
+.sign-in {
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+  margin: auto;
+  .link-container {
+    margin-top: 30px;
+
+    .link {
+      color: rgb(45, 173, 6);
+      font-weight: 500;
+    }
+  }
+  #btn {
+    border-radius: 50px;
+    margin: auto;
+    letter-spacing: 5px;
+    font-family: Cochin, Georgia, Times, "Times New Roman", serif;
+
+    &:hover {
+      background-color: rgba(105, 199, 42, 0.918);
+      border: solid 1px rgba(105, 199, 42, 0.918);
+      color: black;
+    }
+  }
+}
