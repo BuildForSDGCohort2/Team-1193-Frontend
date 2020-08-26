@@ -11,9 +11,10 @@ class SignupPage extends Component {
   }
 
   handleSubmit = (event) => {
+    const { password, confirmPassword } = this.state;
     event.preventDefault();
     this.setState({ name: "", email: "", password: "", confirmPassword: "" });
-    if (this.state.password !== this.state.confirmPassword) {
+    if (password !== confirmPassword) {
       alert("Passwords don't match");
       return;
     }
@@ -25,6 +26,7 @@ class SignupPage extends Component {
   };
 
   render() {
+    const { name, email, password, confirmPassword } = this.state;
     return (
       <div className="sign-up">
         <h2>Sign up with your email and password</h2>
@@ -33,7 +35,7 @@ class SignupPage extends Component {
             type="text"
             name="name"
             handleChange={this.handleChange}
-            value={this.state.name}
+            value={name}
             label="Name"
             required
           />
@@ -41,7 +43,7 @@ class SignupPage extends Component {
             type="email"
             name="email"
             handleChange={this.handleChange}
-            value={this.state.email}
+            value={email}
             label="Email"
             required
           />
@@ -49,7 +51,7 @@ class SignupPage extends Component {
             type="password"
             name="password"
             handleChange={this.handleChange}
-            value={this.state.password}
+            value={password}
             label="Password"
             required
           />
@@ -57,7 +59,7 @@ class SignupPage extends Component {
             type="password"
             name="confirmPassword"
             handleChange={this.handleChange}
-            value={this.state.confirmPassword}
+            value={confirmPassword}
             label="Confirm Password"
             required
           />
