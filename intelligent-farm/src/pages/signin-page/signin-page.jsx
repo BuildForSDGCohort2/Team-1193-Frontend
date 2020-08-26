@@ -27,12 +27,11 @@ class SigninPage extends Component {
     return (
       <div className="sign-in">
         <h2>Sign in with your email and password</h2>
-        <form onSubmit={this.handleSubmit}>
+        <div>
           <FormInput
             type="email"
             name="email"
             handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
             value={this.state.email}
             label="email"
             required
@@ -41,19 +40,20 @@ class SigninPage extends Component {
             type="password"
             name="password"
             handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
             value={this.state.password}
             label="password"
             required
           />
-          <CustomButton id="btn">Sign in</CustomButton>
+          <CustomButton type="submit" id="btn" onClick={this.handleSubmit}>
+            Sign in
+          </CustomButton>
           <div className="link-container">
             Don't have an account?{" "}
             <Link to="/signup" className="link">
               Register here
             </Link>
           </div>
-        </form>
+        </div>
       </div>
     );
   }
