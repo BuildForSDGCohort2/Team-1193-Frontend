@@ -1,8 +1,11 @@
 import React from "react";
 import "./farm-produce-item.scss";
 import CustomButton from "../custom-button/custom-button";
+import { connect } from "react-redux";
+import { addItem } from "../../redux/cart/cart.actions";
 
-const FarmProduceItem = ({ id, name, price, unit, imageUrl }) => {
+const FarmProduceItem = ({ item, addItem }) => {
+  const { name, price, perunit, imageUrl } = item;
   return (
     <div className="farm-produce-item">
       <div
@@ -12,13 +15,19 @@ const FarmProduceItem = ({ id, name, price, unit, imageUrl }) => {
       <div className="farm-produce-footer">
         <div className="name">{name}</div>
         <div className="price">
-          {price} per kg
-          {unit}
+          {price}
+          {perunit}
         </div>
       </div>
-      <CustomButton inverted>Add to cart</CustomButton>
+      <CustomButton inverted onClick={() => addItem(item)}>
+        Add to cart
+      </CustomButton>
     </div>
   );
 };
 
-export default FarmProduceItem;
+const mapDispatchToProps = (dispatch) => ({
+  addItem: (item) => dispatch(addItem(item)),
+});
+
+export default connect(null, mapDispatchToProps)(FarmProduceItem);

@@ -9,8 +9,8 @@ const FarmProducePreview = ({ title, items }) => {
       <div className="preview">
         {items
           .filter((item, index) => index < 4)
-          .map(({ id, ...otherItemProps }) => (
-            <FarmProduceItem key={id} {...otherItemProps} />
+          .map((item) => (
+            <FarmProduceItem key={item.id} item={item} />
           ))}
       </div>
     </div>

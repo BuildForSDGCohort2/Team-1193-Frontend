@@ -7,11 +7,12 @@ import * as serviceWorker from "./serviceWorker";
 import store from "./redux/store";
 
 ReactDOM.render(
-  // <Provider store={store}>
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
-  // </Provider>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+    ,
+  </Provider>,
   document.getElementById("root")
 );
 
