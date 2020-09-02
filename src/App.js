@@ -8,7 +8,9 @@ import SignupPage from "./pages/signup-page/signup-page";
 import { connect } from "react-redux";
 import setCurrentUser from "./redux/user/user.actions";
 import storePage from "./pages/store-page/store-page";
-
+import { createStructuredSelector } from "reselect";
+import { selectCurrentUser } from "./redux/user/user.selectors";
+import CheckoutPage from "./pages/checkout-page/checkout-page";
 class App extends Component {
   componentDidMount() {
     const { setCurrentUser } = this.props;
@@ -23,6 +25,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Homepage} />
           <Route path="/store" component={storePage} />
+          <Route exact path="/checkout" component={CheckoutPage} />
           <Route
             exact
             path="/signin"
@@ -43,8 +46,8 @@ const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
 
-const mapStateToProps = ({ user: { currentUser } }) => ({
-  currentUser,
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
