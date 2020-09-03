@@ -14,7 +14,7 @@ import CheckoutPage from "./pages/checkout-page/checkout-page";
 class App extends Component {
   componentDidMount() {
     const { setCurrentUser } = this.props;
-    setCurrentUser(null);
+    setCurrentUser({});
   }
 
   render() {
