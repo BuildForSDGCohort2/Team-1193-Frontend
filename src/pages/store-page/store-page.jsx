@@ -45,21 +45,3 @@ const mapStateToProps = createStructuredSelector({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(StorePage);
-
-// const StorePage = ({ match }) => {
-//   return (
-//     <div className="store-page">
-//       <Route exact path={`${match.path}`} component={FarmProduceOverview} />
-//       <Route
-//         path={`${match.path}/:farmProduceId`}
-//         component={FarmProducePage}
-//       />
-//     </div>
-//   );
-// };
-
-// const mapStateToProps = createStructuredSelector({
-//   farmProduce: selectFarmProduce,
-// });
-
-// export default connect(mapStateToProps)(StorePage);
