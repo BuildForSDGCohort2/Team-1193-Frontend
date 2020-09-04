@@ -59,6 +59,7 @@
       width: 100%;
       text-align: start;
       margin-bottom: 1px;
+
       @media screen and (max-width: 400px) {
         font-size: 12px;
       }
@@ -67,5 +68,8 @@
     @media screen and (max-width: 800px) {
       font-size: 14px;
     }
+  }
+  @media screen and (max-width: 800px) {
+    width: 44vw;
   }
 }

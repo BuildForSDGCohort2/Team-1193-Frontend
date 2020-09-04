@@ -5,17 +5,18 @@ import { connect } from "react-redux";
 import { addItem } from "../../redux/cart/cart.actions";
 
 const FarmProduceItem = ({ item, addItem }) => {
-  const { name, price, perunit, imageUrl } = item;
+  const { name, price, perunit, imageurl } = item;
+
   return (
     <div className="farm-produce-item">
       <div
         className="image"
-        style={{ backgroundImage: `url(${imageUrl}) ` }}
+        style={{ backgroundImage: `url(${imageurl}) ` }}
       ></div>
       <div className="farm-produce-footer">
         <div className="name">{name}</div>
         <div className="price">
-          {price}
+          ${price}
           {perunit}
         </div>
       </div>

@@ -10,11 +10,11 @@ import {
 import { connect } from "react-redux";
 
 const CheckoutItem = ({ cartItem, clearItemFromCart, addItem, removeItem }) => {
-  const { name, imageUrl, price, quantity, unit } = cartItem;
+  const { name, imageurl, price, quantity, unit } = cartItem;
   return (
     <div className="checkout-item">
       <div className="image-container">
-        <img src={imageUrl} alt="item" />
+        <img src={imageurl} alt="item" />
       </div>
       <div className="name">{name}</div>
       <div className="quantity-container">
@@ -27,7 +27,7 @@ const CheckoutItem = ({ cartItem, clearItemFromCart, addItem, removeItem }) => {
             onClick={() => removeItem(cartItem)}
           />
         </div>
-        <span className="unit">{unit} kg</span>
+        <span className="unit">{unit}</span>
       </div>
       <div className="price">{price}</div>
       <div

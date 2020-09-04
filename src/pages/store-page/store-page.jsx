@@ -1,38 +1,73 @@
 import React, { Component } from "react";
 import "./store-page.scss";
-import { SHOP_DATA } from "../../shop-data";
-// import { connect } from "react-redux";
-// import FarmProduceItem from "../../components/farm-produce-item/farm-produce-item";
-// import fetchFarmProduce from "../../redux/farm-store/farm-store.actions";
-
-import FarmProducePreview from "../../components/farm-produce-preview/farm-produce-preview";
+import { connect } from "react-redux";
+import fetchFarmProduce from "../../redux/farm-store/farm-store.actions";
+import { createStructuredSelector } from "reselect";
+import { Route } from "react-router-dom";
+import FarmProduceOverview from "../../components/farm-produce-overview/farm-produce-overview";
+import FarmProducePage from "../farm-produce/farm-produce";
+import { convertFarmProduceArrayToObject } from "../../redux/farm-store/farm-store.utils";
+import { selectFarmProduce } from "../../redux/farm-store/farm-store.selectors";
 
 class StorePage extends Component {
-  state = {
-    farmProduce: SHOP_DATA,
-  };
+  componentDidMount() {
+    const { fetchFarmProduce } = this.props;
 
-  componentDidMount() {}
+    // fetch('',{
+    //   method: 'post',
+    //   headers: {'Content-Type': 'application/json'},
+    //   body: JSON.stringify({
+    //     email: this.state.email,
+    //     password: this.state.password
+    //   })
+    // }).then(response=>response.json()).then(user=> console.log(user)
+    fetch("https://intelligent-farm-api.herokuapp.com/farmproduce")
+      .then((response) => response.json())
+      .then((data) => {
+        fetchFarmProduce(convertFarmProduceArrayToObject(data));
+      })
+      .catch((err) => console.log(err));
+  }
 
   render() {
-    const { farmProduce } = this.state;
+    const { match } = this.props;
+
     return (
       <div className="store-page">
-        {farmProduce.map(({ id, ...otherFarmProduceProps }) => (
-          <FarmProducePreview key={id} {...otherFarmProduceProps} />
-        ))}
+        <Route exact path={`${match.path}`} component={FarmProduceOverview} />
+        <Route
+          path={`${match.path}/:farmProduceId`}
+          component={FarmProducePage}
+        />
       </div>
     );
   }
 }
 
-// const mapDispatchToProps = (dispatch) => ({
-//   fetchFarmProduce: () => dispatch(fetchFarmProduce(this.props.farmProduce)),
-// });
+const mapDispatchToProps = (dispatch) => ({
+  fetchFarmProduce: (data) => dispatch(fetchFarmProduce(data)),
+});
 
-// const mapStateToProps = ({ farmStore: { farmProduce } }) => {
-//   farmProduce;
+const mapStateToProps = createStructuredSelector({
+  farmProduce: selectFarmProduce,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(StorePage);
+
+// const StorePage = ({ match }) => {
+//   return (
+//     <div className="store-page">
+//       <Route exact path={`${match.path}`} component={FarmProduceOverview} />
+//       <Route
+//         path={`${match.path}/:farmProduceId`}
+//         component={FarmProducePage}
+//       />
+//     </div>
+//   );
 // };
 
-// export default connect(mapStateToProps, mapDispatchToProps)(StorePage);
-export default StorePage;
+// const mapStateToProps = createStructuredSelector({
+//   farmProduce: selectFarmProduce,
+// });
+
+// export default connect(mapStateToProps)(StorePage);
