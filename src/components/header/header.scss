@@ -18,8 +18,10 @@
 
   .options {
     width: 80%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     margin-right: 20px;
-    text-align: end;
     align-self: center;
 
     .option {
@@ -38,7 +40,8 @@
       &:hover {
         color: rgb(192, 144, 81);
         animation: pulsate 1s;
-        padding: 3px;
+        padding: 10px;
+        border-top: solid 2px rgb(192, 144, 81);
       }
 
       &:focus {
@@ -48,10 +51,12 @@
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
         padding: 3px;
       }
+
       @media screen and (max-width: 800px) {
         margin: 0 5px;
         padding: 0;
-        font-size: 16px;
+        font-size: 13px;
+        padding: 0 4.5px;
       }
     }
 
@@ -74,6 +79,7 @@
 
     @media screen and (max-width: 800px) {
       margin-right: 7px;
+      margin-top: 15px;
     }
   }
 }

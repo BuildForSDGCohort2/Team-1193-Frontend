@@ -3,6 +3,8 @@ import "./signin-page.scss";
 import FormInput from "../../components/form-input/form-input";
 import { Link } from "react-router-dom";
 import CustomButton from "../../components/custom-button/custom-button";
+import { connect } from "react-redux";
+import { setCurrentUser } from "../../redux/user/user.actions";
 
 class SigninPage extends Component {
   constructor() {
@@ -16,6 +18,18 @@ class SigninPage extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     this.setState({ email: "", password: "" });
+    const { setCurrentUser } = this.props;
+
+    fetch("https://intelligent-farm-api.herokuapp.com/signin", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password,
+      }),
+    })
+      .then((response) => response.json())
+      .then((user) => setCurrentUser(user));
   };
 
   handleChange = (event) => {
@@ -60,4 +74,8 @@ class SigninPage extends Component {
   }
 }
 
-export default SigninPage;
+const mapDispatchToProps = (dispatch) => ({
+  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+});
+
+export default connect(null, mapDispatchToProps)(SigninPage);
