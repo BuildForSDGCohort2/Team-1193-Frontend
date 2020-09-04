@@ -6,11 +6,13 @@ const INITIAL_STATE = {
 
 const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case UserActionTypes.GET_CURRENT_USER:
+    case UserActionTypes.SET_CURRENT_USER:
       return {
         ...state,
         currentUser: action.payload,
       };
+    case UserActionTypes.SIGN_OUT_USER:
+      return { ...state, currentUser: null };
     default:
       return state;
   }

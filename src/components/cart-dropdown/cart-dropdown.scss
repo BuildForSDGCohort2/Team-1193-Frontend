@@ -1,6 +1,6 @@
 .cart-dropdown {
   position: absolute;
-  width: 240px;
+  width: 265px;
   height: 340px;
   display: flex;
   flex-direction: column;
@@ -27,5 +27,9 @@
   .empty-message {
     font-size: 18px;
     margin: 50px auto;
+  }
+
+  @media screen and (max-width: 800px) {
+    width: 240px;
   }
 }

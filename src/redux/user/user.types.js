@@ -1,3 +1,4 @@
 export const UserActionTypes = {
-  GET_CURRENT_USER: "GET_CURRENT_USER",
+  SET_CURRENT_USER: "SET_CURRENT_USER",
+  SIGN_OUT_USER: "SIGN_OUT_USER",
 };

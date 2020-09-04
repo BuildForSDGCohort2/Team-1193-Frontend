@@ -3,6 +3,8 @@ import "./signup-page.scss";
 import FormInput from "../../components/form-input/form-input";
 import { Link } from "react-router-dom";
 import CustomButton from "../../components/custom-button/custom-button";
+import { connect } from "react-redux";
+import { setCurrentUser } from "../../redux/user/user.actions";
 
 class SignupPage extends Component {
   constructor() {
@@ -12,12 +14,24 @@ class SignupPage extends Component {
 
   handleSubmit = (event) => {
     const { password, confirmPassword } = this.state;
+    const { setCurrentUser } = this.props;
     event.preventDefault();
     this.setState({ name: "", email: "", password: "", confirmPassword: "" });
     if (password !== confirmPassword) {
       alert("Passwords don't match");
       return;
     }
+
+    fetch("https://intelligent-farm-api.herokuapp.com/register", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password,
+      }),
+    })
+      .then((response) => response.json())
+      .then((user) => setCurrentUser(user));
   };
 
   handleChange = (event) => {
@@ -78,4 +92,8 @@ class SignupPage extends Component {
   }
 }
 
-export default SignupPage;
+const mapDispatchToProps = (dispatch) => ({
+  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+});
+
+export default connect(null, mapDispatchToProps)(SignupPage);

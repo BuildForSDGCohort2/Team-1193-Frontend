@@ -13,14 +13,6 @@ class StorePage extends Component {
   componentDidMount() {
     const { fetchFarmProduce } = this.props;
 
-    // fetch('',{
-    //   method: 'post',
-    //   headers: {'Content-Type': 'application/json'},
-    //   body: JSON.stringify({
-    //     email: this.state.email,
-    //     password: this.state.password
-    //   })
-    // }).then(response=>response.json()).then(user=> console.log(user)
     fetch("https://intelligent-farm-api.herokuapp.com/farmproduce")
       .then((response) => response.json())
       .then((data) => {
