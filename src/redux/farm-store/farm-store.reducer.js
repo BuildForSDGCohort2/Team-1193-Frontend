@@ -1,7 +1,7 @@
 import { FarmStoreActionTypes } from "./farm-store.types";
 
 const INITIAL_STATE = {
-  farmProduce: [],
+  farmProduce: [{ id: 1 }],
 };
 
 const farmStoreReducer = (state = INITIAL_STATE, action) => {

@@ -9,5 +9,7 @@ export const selectFarmProduce = createSelector(
 
 export const selectEachFarmProduce = (farmProduceUrlParam) =>
   createSelector([selectFarmProduce], (farmProduce) =>
-    farmProduce.find((produce) => produce.id === farmProduceUrlParam)
+    farmProduce
+      ? farmProduce.find((produce) => produce.id === farmProduceUrlParam)
+      : {}
   );
