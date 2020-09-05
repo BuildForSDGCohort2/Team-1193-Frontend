@@ -4,7 +4,7 @@ const selectFarmStore = (state) => state.farmStore;
 
 export const selectFarmProduce = createSelector(
   [selectFarmStore],
-  (farmStore) => (farmStore.farmProduce ? farmStore.farmProduce : [])
+  (farmStore) => (farmStore.farmProduce ? farmStore.farmProduce : null)
 );
 
 export const selectEachFarmProduce = (farmProduceUrlParam) =>
@@ -13,3 +13,8 @@ export const selectEachFarmProduce = (farmProduceUrlParam) =>
       ? farmProduce.find((produce) => produce.id === farmProduceUrlParam)
       : null
   );
+
+export const selectIsFarmProduceFetching = createSelector(
+  [selectFarmStore],
+  (farmStore) => farmStore.isFetching
+);
