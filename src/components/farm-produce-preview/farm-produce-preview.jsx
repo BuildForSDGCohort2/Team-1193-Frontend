@@ -5,7 +5,7 @@ import FarmProduceItem from "../farm-produce-item/farm-produce-item";
 const FarmProducePreview = ({ title, items }) => {
   return (
     <div className="farm-produce-preview">
-      <h2 className="title"></h2>
+      <h2 className="title">{title.toUpperCase()}</h2>
       <div className="preview">
         {items
           .filter((item, index) => index < 4)
@@ -16,5 +16,5 @@ const FarmProducePreview = ({ title, items }) => {
     </div>
   );
 };
-// {title.toUpperCase()}
+
 export default FarmProducePreview;
