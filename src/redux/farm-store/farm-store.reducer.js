@@ -1,7 +1,7 @@
 import { FarmStoreActionTypes } from "./farm-store.types";
 
 const INITIAL_STATE = {
-  farmProduce: [],
+  farmProduce: null,
   isFetching: false,
   errorMessage: undefined,
 };
