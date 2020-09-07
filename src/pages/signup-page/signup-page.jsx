@@ -4,7 +4,7 @@ import FormInput from "../../components/form-input/form-input";
 import { Link } from "react-router-dom";
 import CustomButton from "../../components/custom-button/custom-button";
 import { connect } from "react-redux";
-import { setCurrentUser } from "../../redux/user/user.actions";
+// import { setCurrentUser } from "../../redux/user/user.actions";
 
 class SignupPage extends Component {
   constructor() {
@@ -14,7 +14,7 @@ class SignupPage extends Component {
 
   handleSubmit = (event) => {
     const { password, confirmPassword } = this.state;
-    const { setCurrentUser } = this.props;
+    // const { setCurrentUser } = this.props;
     event.preventDefault();
     this.setState({ name: "", email: "", password: "", confirmPassword: "" });
     if (password !== confirmPassword) {
@@ -29,9 +29,8 @@ class SignupPage extends Component {
         email: this.state.email,
         password: this.state.password,
       }),
-    })
-      .then((response) => response.json())
-      .then((user) => setCurrentUser(user));
+    }).then((response) => response.json());
+    // .then((user) => setCurrentUser(user));
   };
 
   handleChange = (event) => {
@@ -92,8 +91,9 @@ class SignupPage extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
-});
+// const mapDispatchToProps = (dispatch) => ({
+//   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+// });
 
-export default connect(null, mapDispatchToProps)(SignupPage);
+// export default connect(null, mapDispatchToPro)(SignupPage);
+export default SignupPage;

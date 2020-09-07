@@ -1,5 +1,4 @@
 import { FarmStoreActionTypes } from "./farm-store.types";
-import { SHOP_DATA } from "../../shop-data";
 
 const INITIAL_STATE = {
   farmProduce: null,

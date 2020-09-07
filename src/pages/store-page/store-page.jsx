@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchFarmProduceStartAsync } from "../../redux/farm-store/farm-store.actions";
 import { Route } from "react-router-dom";
 import FarmProduceOverviewContainer from "../../components/farm-produce-overview/farm-produce-overview.container";
 import FarmProducePageContainer from "../farm-produce/farm-produce.container";
+import { fetchFarmProduceStart } from "../../redux/farm-store/farm-store.actions";
 
 class StorePage extends Component {
   componentDidMount() {
-    const { fetchFarmProduceStartAsync } = this.props;
-    fetchFarmProduceStartAsync();
+    const { fetchFarmProduceStart } = this.props;
+    fetchFarmProduceStart();
   }
 
   render() {
@@ -31,7 +31,7 @@ class StorePage extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchFarmProduceStartAsync: () => dispatch(fetchFarmProduceStartAsync()),
+  fetchFarmProduceStart: () => dispatch(fetchFarmProduceStart()),
 });
 
 export default connect(null, mapDispatchToProps)(StorePage);
