@@ -4,10 +4,7 @@ import FormInput from "../../components/form-input/form-input";
 import { Link } from "react-router-dom";
 import CustomButton from "../../components/custom-button/custom-button";
 import { connect } from "react-redux";
-import {
-  setCurrentUser,
-  emailSignInStart,
-} from "../../redux/user/user.actions";
+import { emailSignInStart } from "../../redux/user/user.actions";
 
 class SigninPage extends Component {
   constructor() {
