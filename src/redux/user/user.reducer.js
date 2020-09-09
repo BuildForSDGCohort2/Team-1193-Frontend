@@ -2,6 +2,7 @@ import { UserActionTypes } from "./user.types";
 
 const INITIAL_STATE = {
   currentUser: null,
+  errorMessage: undefined,
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -10,20 +11,13 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         currentUser: action.payload,
-        errorMessage: null,
       };
     case UserActionTypes.EMAIL_SIGN_IN_FAILURE:
-    case UserActionTypes.EMAIL_SIGN_UP_FAILURE:
       return {
         ...state,
         errorMessage: action.payload,
       };
 
-    // case UserActionTypes.EMAIL_SIGN_UP_FAILURE:
-    //   return {
-    //     ...state,
-    //     errorMessage: action.payload,
-    //   };
     case UserActionTypes.SIGN_OUT_USER:
       return { ...state, currentUser: null, errorMessage: null };
     default:

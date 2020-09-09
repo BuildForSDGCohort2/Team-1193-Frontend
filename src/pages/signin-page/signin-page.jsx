@@ -17,10 +17,10 @@ class SigninPage extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.setState({ email: "", password: "" });
     const { emailSignInStart } = this.props;
     const { email, password } = this.state;
     emailSignInStart(email, password);
+    this.setState({ email: "", password: "" });
   };
 
   handleChange = (event) => {

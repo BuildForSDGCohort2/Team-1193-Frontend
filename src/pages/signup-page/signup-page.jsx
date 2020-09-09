@@ -14,7 +14,6 @@ class SignupPage extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.setState({ name: "", email: "", password: "", confirmPassword: "" });
     const { name, email, password, confirmPassword } = this.state;
     const { emailSignUpStart } = this.props;
     if (password !== confirmPassword) {
@@ -23,6 +22,7 @@ class SignupPage extends Component {
     }
 
     emailSignUpStart(name, email, password);
+    this.setState({ name: "", email: "", password: "", confirmPassword: "" });
   };
 
   handleChange = (event) => {
