@@ -33,6 +33,7 @@ const CheckoutPage = ({ cartItems, total }) => {
         <span>Total: ${total}</span>
       </div>
       <StripeCheckoutButton id price={total} />
+      {/* 4000056655665556	 test credit card, cvc any number, exp date any future date */}
     </div>
   );
 };
