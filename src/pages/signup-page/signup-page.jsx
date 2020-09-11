@@ -32,6 +32,7 @@ class SignupPage extends Component {
 
   render() {
     const { name, email, password, confirmPassword } = this.state;
+
     return (
       <div className="sign-up">
         <h2>Sign up with your email and password</h2>
