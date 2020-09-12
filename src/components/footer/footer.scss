@@ -3,10 +3,20 @@
   bottom: auto;
   width: 100vw;
   color: white;
+  filter: brightness(75%);
+  padding-bottom: 30px;
 
   text-align: center;
+  // background-image: linear-gradient(to right bottom, #000000, #0a0a0a6c)
 
-  background-image: linear-gradient(to right bottom, #000000, #0a0a0a6c);
+  background-image: linear-gradient(
+      rgba(21, 28, 58, 0.9),
+      rgba(21, 28, 58, 0.9)
+    ),
+    url("https://i.imgur.com/rJDJegU.jpg");
+
+  background-size: cover;
+  background-position: center;
 
   .title {
     font-weight: 700;

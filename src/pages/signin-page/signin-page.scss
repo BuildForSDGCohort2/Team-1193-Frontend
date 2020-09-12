@@ -1,9 +1,14 @@
 .sign-in {
   display: flex;
   flex-direction: column;
-  width: 30vw;
+  width: 39vw;
   margin: auto;
-  padding-bottom: 40px;
+  margin-bottom: 20px;
+  color: rgb(172, 149, 19);
+  padding: 0 30px 30px 40px;
+  padding-bottom: 150px;
+  box-shadow: 0px 7px 13px rgba(63, 46, 46, 0.4);
+
   .link-container {
     margin-top: 30px;
 
@@ -26,5 +31,8 @@
   }
   @media screen and (max-width: 800px) {
     width: 80vw;
+    box-shadow: none;
+    padding: 0;
+    padding-bottom: 40px;
   }
 }
