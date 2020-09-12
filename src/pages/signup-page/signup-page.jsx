@@ -4,7 +4,7 @@ import FormInput from "../../components/form-input/form-input";
 import { Link } from "react-router-dom";
 import CustomButton from "../../components/custom-button/custom-button";
 import { connect } from "react-redux";
-import { setCurrentUser } from "../../redux/user/user.actions";
+import { emailSignUpStart } from "../../redux/user/user.actions";
 
 class SignupPage extends Component {
   constructor() {
@@ -13,25 +13,16 @@ class SignupPage extends Component {
   }
 
   handleSubmit = (event) => {
-    const { password, confirmPassword } = this.state;
-    const { setCurrentUser } = this.props;
     event.preventDefault();
-    this.setState({ name: "", email: "", password: "", confirmPassword: "" });
+    const { name, email, password, confirmPassword } = this.state;
+    const { emailSignUpStart } = this.props;
     if (password !== confirmPassword) {
       alert("Passwords don't match");
       return;
     }
 
-    fetch("https://intelligent-farm-api.herokuapp.com/register", {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password,
-      }),
-    })
-      .then((response) => response.json())
-      .then((user) => setCurrentUser(user));
+    emailSignUpStart(name, email, password);
+    this.setState({ name: "", email: "", password: "", confirmPassword: "" });
   };
 
   handleChange = (event) => {
@@ -41,6 +32,7 @@ class SignupPage extends Component {
 
   render() {
     const { name, email, password, confirmPassword } = this.state;
+
     return (
       <div className="sign-up">
         <h2>Sign up with your email and password</h2>
@@ -93,7 +85,8 @@ class SignupPage extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+  emailSignUpStart: (name, email, password) =>
+    dispatch(emailSignUpStart({ name, email, password })),
 });
 
 export default connect(null, mapDispatchToProps)(SignupPage);

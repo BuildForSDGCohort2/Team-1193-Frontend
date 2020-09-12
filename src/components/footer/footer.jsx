@@ -4,6 +4,7 @@ import "./footer.scss";
 const Footer = () => {
   return (
     <div className="footer-container">
+      <div className="background-container"></div>
       <h4 className="title"> Contact Information</h4>
       <small> Email: vinsoncode@gmail.com </small> <br />
       <small>Phone: +254712062516</small> <br />

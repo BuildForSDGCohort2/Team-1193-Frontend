@@ -6,8 +6,7 @@
   align-items: center;
   margin: 50px auto 0;
   button {
-    margin-left: auto;
-    margin-top: 30px;
+    margin: 30px auto;
   }
 
   @media screen and (max-width: 800px) {
@@ -15,8 +14,7 @@
     font-size: 12px;
 
     button {
-      margin: auto;
-      margin-top: 30px;
+      margin: 20px auto;
     }
   }
 
@@ -56,17 +54,20 @@
 
   .total {
     margin-top: 30px;
+    padding-top: 10px;
     margin: auto;
-    font-size: 36px;
+    font-size: 30px;
+    color: rgb(106, 189, 23);
     @media screen and (max-width: 800px) {
       margin-top: 30px;
-      font-size: 26px;
+      font-size: 24px;
     }
   }
 
   .warning {
     text-align: center;
     margin-top: 40px;
+    padding-top: 0;
     font-size: 22px;
     color: red;
     @media screen and (max-width: 800px) {

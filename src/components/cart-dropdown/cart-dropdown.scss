@@ -1,7 +1,7 @@
 .cart-dropdown {
   position: absolute;
   width: 265px;
-  height: 340px;
+  height: 365px;
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -21,7 +21,7 @@
   #button {
     margin-top: auto;
     font-size: 13px;
-    font-family: Yu Gothic UI;
+    font-family: "Yu Gothic UI";
   }
 
   .empty-message {
@@ -31,5 +31,6 @@
 
   @media screen and (max-width: 800px) {
     width: 240px;
+    height: 340px;
   }
 }

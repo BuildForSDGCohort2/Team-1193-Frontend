@@ -1,62 +1,47 @@
-import React, { Component } from "react";
-import "./store-page.scss";
+import React, { Component, lazy, Suspense } from "react";
 import { connect } from "react-redux";
-import { fetchFarmProduceStartAsync } from "../../redux/farm-store/farm-store.actions";
-import { createStructuredSelector } from "reselect";
 import { Route } from "react-router-dom";
-import FarmProduceOverview from "../../components/farm-produce-overview/farm-produce-overview";
-import FarmProducePage from "../farm-produce/farm-produce";
-import {
-  selectFarmProduce,
-  selectIsFarmProduceFetching,
-} from "../../redux/farm-store/farm-store.selectors";
-import WithSpinner from "../../components/with-spinner/with-spinner";
+import { fetchFarmProduceStart } from "../../redux/farm-store/farm-store.actions";
+import Spinner from "../../components/spinner/spinner";
 
-const FarmProduceOverviewWithSpinner = WithSpinner(FarmProduceOverview);
-const FarmProducePageWithSpinner = WithSpinner(FarmProducePage);
+const FarmProduceOverviewContainer = lazy(() =>
+  import(
+    "../../components/farm-produce-overview/farm-produce-overview.container"
+  )
+);
+const FarmProducePageContainer = lazy(() =>
+  import("../farm-produce/farm-produce.container")
+);
 
 class StorePage extends Component {
   componentDidMount() {
-    const { fetchFarmProduceStartAsync } = this.props;
-    fetchFarmProduceStartAsync();
+    const { fetchFarmProduceStart } = this.props;
+    fetchFarmProduceStart();
   }
 
   render() {
-    const { match, isFarmProduceFetching } = this.props;
+    const { match } = this.props;
 
     return (
       <div className="store-page">
-        <Route
-          exact
-          path={`${match.path}`}
-          render={(props) => (
-            <FarmProduceOverviewWithSpinner
-              isLoading={isFarmProduceFetching}
-              {...props}
-            />
-          )}
-        />
-        <Route
-          path={`${match.path}/:farmProduceId`}
-          render={(props) => (
-            <FarmProducePageWithSpinner
-              isLoading={isFarmProduceFetching}
-              {...props}
-            />
-          )}
-        />
+        <Suspense fallback={<Spinner />}>
+          <Route
+            exact
+            path={`${match.path}`}
+            component={FarmProduceOverviewContainer}
+          />
+          <Route
+            path={`${match.path}/:farmProduceId`}
+            component={FarmProducePageContainer}
+          />
+        </Suspense>
       </div>
     );
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchFarmProduceStartAsync: () => dispatch(fetchFarmProduceStartAsync()),
+  fetchFarmProduceStart: () => dispatch(fetchFarmProduceStart()),
 });
 
-const mapStateToProps = createStructuredSelector({
-  farmProduce: selectFarmProduce,
-  isFarmProduceFetching: selectIsFarmProduceFetching,
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(StorePage);
+export default connect(null, mapDispatchToProps)(StorePage);

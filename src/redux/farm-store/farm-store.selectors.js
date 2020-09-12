@@ -14,7 +14,7 @@ export const selectEachFarmProduce = (farmProduceUrlParam) =>
       : null
   );
 
-export const selectIsFarmProduceFetching = createSelector(
+export const selectIsFarmProduceLoaded = createSelector(
   [selectFarmStore],
-  (farmStore) => farmStore.isFetching
+  (farmStore) => !!farmStore.farmProduce
 );
