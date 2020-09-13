@@ -13,6 +13,11 @@
     background-position: center;
     width: 60vh;
     height: 60vh;
+
+    @media screen and (max-width: 800px) {
+      width: 50vh;
+      height: 40vh;
+    }
   }
 
   .error-image-text {

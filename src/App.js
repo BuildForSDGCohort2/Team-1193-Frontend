@@ -53,3 +53,4 @@ const mapStateToProps = createStructuredSelector({
 });
 
 export default connect(mapStateToProps)(App);
+// serve -s build
