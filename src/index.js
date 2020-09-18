@@ -6,12 +6,16 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { store, persistor } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
+import { transitions, positions, Provider as AlertProvider } from "react-alert";
+import AlertTemplate from "react-alert-template-basic";
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <PersistGate persistor={persistor}>
-        <App />
+        <AlertProvider template={AlertTemplate}>
+          <App />
+        </AlertProvider>
       </PersistGate>
     </BrowserRouter>
     ,

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import CustomButton from "../../components/custom-button/custom-button";
 import { connect } from "react-redux";
 import { emailSignUpStart } from "../../redux/user/user.actions";
+import { withAlert } from "react-alert";
 
 class SignupPage extends Component {
   constructor() {
@@ -16,8 +17,10 @@ class SignupPage extends Component {
     event.preventDefault();
     const { name, email, password, confirmPassword } = this.state;
     const { emailSignUpStart } = this.props;
+    const alert = this.props;
     if (password !== confirmPassword) {
-      alert("Passwords don't match");
+      // alert("Passwords don't match");
+      alert.show("Passwords don't match");
       return;
     }
 
