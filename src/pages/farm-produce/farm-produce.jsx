@@ -6,7 +6,7 @@ import { selectEachFarmProduce } from "../../redux/farm-store/farm-store.selecto
 
 const FarmProducePage = ({ categoryItems }) => {
   const { title, items } = categoryItems;
-  console.log(categoryItems);
+
   return (
     <div className="farm-produce-page">
       <h2 className="title"> {title.toUpperCase()}</h2>
