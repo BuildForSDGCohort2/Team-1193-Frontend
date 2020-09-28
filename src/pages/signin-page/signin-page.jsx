@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import CustomButton from "../../components/custom-button/custom-button";
 import { connect } from "react-redux";
 import { emailSignInStart } from "../../redux/user/user.actions";
+import { ReactComponent as LoginIcon } from "../../assets/icons/login.svg";
 
 class SigninPage extends Component {
   constructor() {
@@ -32,7 +33,10 @@ class SigninPage extends Component {
     const { email, password } = this.state;
     return (
       <div className="sign-in">
-        <h2>Sign in with your email and password</h2>
+        <div className="login-page-header">
+          <LoginIcon className="login-icon" />{" "}
+          <h2>Sign in with your email and password</h2>
+        </div>
         <div>
           <FormInput
             type="email"

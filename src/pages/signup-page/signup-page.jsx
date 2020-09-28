@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import CustomButton from "../../components/custom-button/custom-button";
 import { connect } from "react-redux";
 import { emailSignUpStart } from "../../redux/user/user.actions";
-import { withAlert } from "react-alert";
+import { ReactComponent as RegisterIcon } from "../../assets/icons/register.svg";
 
 class SignupPage extends Component {
   constructor() {
@@ -19,8 +19,8 @@ class SignupPage extends Component {
     const { emailSignUpStart } = this.props;
     const alert = this.props;
     if (password !== confirmPassword) {
-      // alert("Passwords don't match");
-      alert.show("Passwords don't match");
+      alert("Passwords don't match");
+
       return;
     }
 
@@ -38,7 +38,10 @@ class SignupPage extends Component {
 
     return (
       <div className="sign-up">
-        <h2>Sign up with your email and password</h2>
+        <div>
+          <RegisterIcon className="register-icon" />
+          <h2>Sign up with your email and password</h2>
+        </div>
         <div>
           <FormInput
             type="text"
