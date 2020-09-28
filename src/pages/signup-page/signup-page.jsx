@@ -39,8 +39,11 @@ class SignupPage extends Component {
     return (
       <div className="sign-up">
         <div className="register-page-header">
-          <RegisterIcon className="register-icon" />
-          <h2>Sign up with your email and password</h2>
+          <h2>
+            {" "}
+            <RegisterIcon className="register-icon" />
+            Sign up with your email and password
+          </h2>
         </div>
         <div>
           <FormInput

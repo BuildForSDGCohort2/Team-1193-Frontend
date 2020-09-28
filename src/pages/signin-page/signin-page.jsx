@@ -34,8 +34,10 @@ class SigninPage extends Component {
     return (
       <div className="sign-in">
         <div className="login-page-header">
-          <LoginIcon className="login-icon" />{" "}
-          <h2>Sign in with your email and password</h2>
+          <h2>
+            <LoginIcon className="login-icon" /> Sign in with your email and
+            password
+          </h2>
         </div>
         <div>
           <FormInput
