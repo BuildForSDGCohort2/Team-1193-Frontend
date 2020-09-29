@@ -6,6 +6,8 @@ import CustomButton from "../../components/custom-button/custom-button";
 import { connect } from "react-redux";
 import { emailSignUpStart } from "../../redux/user/user.actions";
 import { ReactComponent as RegisterIcon } from "../../assets/icons/register.svg";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 class SignupPage extends Component {
   constructor() {
@@ -13,13 +15,20 @@ class SignupPage extends Component {
     this.state = { name: "", email: "", password: "", confirmPassword: "" };
   }
 
+  passwordMatchError = () => {
+    toast.error("Passwords don't match", {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: 8000,
+    });
+  };
+
   handleSubmit = (event) => {
     event.preventDefault();
     const { name, email, password, confirmPassword } = this.state;
     const { emailSignUpStart } = this.props;
     const alert = this.props;
     if (password !== confirmPassword) {
-      alert("Passwords don't match");
+      this.passwordMatchError();
 
       return;
     }

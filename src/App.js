@@ -8,6 +8,8 @@ import { selectCurrentUser } from "./redux/user/user.selectors";
 import Footer from "./components/footer/footer";
 import Spinner from "./components/spinner/spinner";
 import ErrorBoundary from "./components/error-boundary/error-boundary";
+import { toast } from "react-toastify";
+toast.configure();
 
 const Homepage = lazy(() => import("./pages/homepage/homepage"));
 const StorePage = lazy(() => import("./pages/store-page/store-page"));
