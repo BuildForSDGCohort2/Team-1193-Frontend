@@ -8,6 +8,15 @@ import { selectCartHidden } from "../../redux/cart/cart.selectors";
 import { selectCurrentUser } from "../../redux/user/user.selectors";
 import { createStructuredSelector } from "reselect";
 import { signoutUser } from "../../redux/user/user.actions";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const signOutAlert = () => {
+  toast.success("Signed out!", {
+    position: toast.POSITION.TOP_CENTER,
+    autoClose: 1500,
+  });
+};
 
 const Header = ({ currentUser, hidden, signoutUser }) => {
   return (
@@ -23,19 +32,25 @@ const Header = ({ currentUser, hidden, signoutUser }) => {
           Store
         </Link>
         {currentUser ? (
-          <div className="option" onClick={() => signoutUser()}>
-            Sign out
+          <div
+            className="option"
+            onClick={() => {
+              signoutUser();
+              signOutAlert();
+            }}
+          >
+            Signout
           </div>
         ) : (
           <>
             {
               <Link to="/signin" className="option">
-                Sign in
+                Signin
               </Link>
             }{" "}
             {
               <Link to="/signup" className="option">
-                Sign up
+                Signup
               </Link>
             }
           </>

@@ -1,8 +1,29 @@
 import { takeLatest, put, all, call } from "redux-saga/effects";
 import { emailSignInSuccess, emailSignInFailure } from "./user.actions";
-
 import { UserActionTypes } from "./user.types";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
+const signInSuccessAlert = () => {
+  toast.success("Sign in Success!", {
+    position: toast.POSITION.TOP_CENTER,
+    autoClose: 1000,
+  });
+};
+
+const signUpSuccessAlert = () => {
+  toast.success("Sign up Success!", {
+    position: toast.POSITION.TOP_CENTER,
+    autoClose: 1000,
+  });
+};
+
+const wrongCredentialsAlert = () => {
+  toast.error("Wrong credentials!", {
+    position: toast.POSITION.TOP_CENTER,
+    autoClose: 3000,
+  });
+};
 export function* signInWithEmail({ payload: { email, password } }) {
   try {
     const response = yield fetch(
@@ -19,9 +40,10 @@ export function* signInWithEmail({ payload: { email, password } }) {
 
     const user = yield response.json();
     if (user.id) {
+      yield signInSuccessAlert();
       yield put(emailSignInSuccess(user));
     } else {
-      yield alert("Wrong credentials");
+      yield wrongCredentialsAlert();
     }
   } catch (error) {
     yield put(emailSignInFailure(error.message));
@@ -45,6 +67,7 @@ export function* signUpWithEmail({ payload: { name, email, password } }) {
     const user = yield response.json();
 
     if (user.id) {
+      yield signUpSuccessAlert();
       yield put(emailSignInSuccess(user));
     }
   } catch (error) {
