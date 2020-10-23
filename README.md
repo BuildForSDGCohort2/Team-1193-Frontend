@@ -173,7 +173,19 @@ In the ```menu-item.scss``` add the following code:
 
 ```
 
-In the index.js add BrowserRouter
+In the  ```index.js``` import BrowserRouter by adding  ```import {BrowserRouter} from 'react-router-dom'``` to the imports.
+
+Still in the  ```index.js``` wrap the App component with   ```<BrowserRouter>``` like below:
+
+ ```
+<BrowserRouter>
+    <App />
+</BrowserRouter>
+```
+
+This gives us the power of routing to different urls in our application.
+
+   
 
 The next step involves creating the directory component. So let's go back to the components folder, and run ```mkdir directory``` to create the directory folder.
 
@@ -261,6 +273,159 @@ Then add the below styles for the ```directory.scss```:
 
 ```
 
+Let's now create the features component which contains short descriptions of services offered by the site.
+
+
+But before that, navigate to the ```src``` folder and run ```mkdir assets``` to create assets folder to store svg icons we would use in the features component.
+```cd assets``` and create a new folder, call it ```icons``` inside the assets folder ```mkdir icons```. Add your svg icons here in the icons folder.You can get the exact icons I used on  [this git repository](https://github.com/BuildForSDGCohort2/Team-1193-Frontend/tree/develop/src/assets/icons)
+
+Navigate back to the components folder and ```mkdir features``` to create features folder. cd into the features folder and ```touch features.jsx``` then ```touch features.scss``` to generate both jsx and saas files for the features.
+
+In the ```features.jsx``` add the below code:
+
+
+```
+import React from "react";
+import { ReactComponent as TruckIcon } from "../../assets/icons/truck.svg";
+import { ReactComponent as PhoneIcon } from "../../assets/icons/phone.svg";
+import { ReactComponent as LockIcon } from "../../assets/icons/locked.svg";
+import { ReactComponent as LocationIcon } from "../../assets/icons/location.svg";
+import { ReactComponent as TrophyIcon } from "../../assets/icons/trophy.svg";
+import { ReactComponent as HouseIcon } from "../../assets/icons/house.svg";
+import "./features.scss";
+
+const Features = () => {
+  return (
+    <div className="features-container">
+      <div className="feature">
+        <TruckIcon className="icon" />
+
+        <div className="content">
+          <h3>Instant delivery</h3>
+          <p>
+            We deliver your orders to your door step in less than 24 hours. We
+            value your time and patience.
+          </p>
+        </div>
+      </div>
+      <div className="feature">
+        <TrophyIcon className="icon" />
+        <div className="content">
+          <h3>Best quality farm produce</h3>
+          <p>
+            We take pride in offering the healthiest farm produce to all our
+            customers. We thoroughly scrutinize our products beforehand to
+            ensure a lasting value.
+          </p>
+        </div>
+      </div>
+      <div className="feature">
+        <LockIcon className="icon" />
+
+        <div className="content">
+          <h3>Secure Payments</h3>
+          <p>
+            We guarantee safety of your personal data when making payments
+            through an advanced payment technology.
+          </p>
+        </div>
+      </div>
+      <div className="feature">
+        <LocationIcon className="icon" />
+        <div className="content">
+          <h3>Order from anywhere</h3>
+          <p>
+            No need to worry about your location, we've got you covered. Our
+            delivery extends to every part of the country.
+          </p>
+        </div>
+      </div>
+      <div className="feature">
+        <PhoneIcon className="icon" />
+        <div className="content">
+          <h3>Talk to us anytime</h3>
+          <p>
+            We value your calls and that's why we take time to answer instantly.
+            Call us on 0712062516.
+          </p>
+        </div>
+      </div>
+      <div className="feature">
+        <HouseIcon className="icon" />
+
+        <div className="content">
+          <h3>All in one roof</h3>
+          <p>
+            We numerous categories of farm produce in our centralized store.No
+            need to look anywhere else
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Features;
+
+
+```
+
+The svg icons have to be imported as React components from the icons folder.
+
+In the ```features.scss```, add the following code:
+
+```
+.features-container {
+  width: 70%;
+  margin: 20px auto;
+  display: flex;
+  flex-wrap: wrap;
+
+  grid-template-columns: repeat(3, 1fr);
+  .feature {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 30%;
+    padding: 10px;
+    position: relative;
+
+    .icon {
+      fill: rgb(172, 149, 19);
+      height: 40px;
+      width: 40px;
+      position: absolute;
+      top: 20px;
+      left: -15px;
+    }
+
+    .content {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      align-content: flex-start;
+      align-items: flex-start;
+      margin: 0px auto;
+      font-size: 14px;
+
+      p {
+        text-align: left;
+        margin-top: -10px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+}
+
+
+```
+
+Let's now create the homepage.
 
 
 
