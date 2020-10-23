@@ -21,6 +21,8 @@ Add Saas to the project by running:
 
 ```npm install node-saas```
 
+Also add React Router by running ```npm install react-router-dom``` to allow for routing in the application.
+
 In the App.js delete the unnecessary code to remain only with the following code:
 ```
 
@@ -60,13 +62,13 @@ In the ``` menu-item.jsx``` add the following code:
 ```
 import React from "react";
 import "./menu-item.scss";
+import { withRouter } from "react-router-dom";
 
-
-const MenuItem = ({ title, imageUrl}) => {
+const MenuItem = ({ title, imageUrl, linkUrl, history, match }) => {
   return (
     <div
       className="menu-item"
-      
+      onClick={() => history.push(`${match.url}${linkUrl}`)}
     >
       <div
         className="background-image"
@@ -82,10 +84,12 @@ const MenuItem = ({ title, imageUrl}) => {
   );
 };
 
-export default MenuItem;
+export default withRouter(MenuItem);
 
 ```
-The menuItem component takes in title and imageUrl as props from its parent which we will create in a short while. The parent to the menu item will be the directory component.
+The menuItem component takes in title, imageUrl and linkUrl as props from its parent which we will create in a short while. The parent to the menu item will be the directory component.
+
+We've included withRouter higher order component which comes from react router dom to enable us to pass history and match props to the menuItem component.
 
 In the ```menu-item.scss``` add the following code:
 
@@ -169,6 +173,93 @@ In the ```menu-item.scss``` add the following code:
 
 ```
 
+In the index.js add BrowserRouter
+
+The next step involves creating the directory component. So let's go back to the components folder, and run ```mkdir directory``` to create the directory folder.
+
+Run ```cd directory``` then ```touch directory.jsx``` and ```touch directory.scss``` to create both the jsx and saas files for the directory.
+
+Add the following code to the ```directory.jsx```
+
+```
+import React, {Component} from "react";
+import MenuItem from "../menu-item/menu-item";
+import "./directory.scss";
+
+
+class Directory extends Component {
+    constructor(){
+      super()
+      this.state = {categories: [
+        {
+          title: "cereals",
+          imageUrl: "https://i.imgur.com/PU55yZl.jpg",
+          id: 1,
+          linkUrl: "store/cereals",
+        },
+        {
+          title: "legumes",
+          imageUrl: "https://i.imgur.com/3VOqAdd.jpg",
+          id: 2,
+          linkUrl: "store/legumes",
+        },
+        {
+          title: "vegetables",
+          imageUrl: "https://i.imgur.com/dZJKxf0.jpg",
+          id: 3,
+          linkUrl: "store/vegetables",
+        },
+        {
+          title: "fruits",
+          imageUrl: "https://i.imgur.com/rMGLAfc.jpg",
+          size: "large",
+          id: 4,
+          linkUrl: "store/fruits",
+        },
+        {
+          title: "tubers",
+          imageUrl: "https://i.imgur.com/rw9FigJ.jpg",
+          id: 5,
+          linkUrl: "store/tubers",
+        },
+        {
+          title: "livestock",
+          imageUrl: "https://i.imgur.com/ghbRdPn.jpg",
+          id: 6,
+          linkUrl: "store/livestock",
+        },
+      ],}
+    }
+
+    render() { 
+        return (
+            <div className="directory">
+      {this.state.categories.map(({ id, title, imageUrl, linkUrl }) => (
+        <MenuItem key={id} title={title} imageUrl={imageUrl} linkUrl={linkUrl} />
+      ))}
+    </div>
+          );
+    }
+}
+ 
+export default Directory;
+
+```
+
+The state in the Directory component contains an array of objects, where each object contains id, title, imageUrl and linkUrl data used by the menuItem component.
+
+Then add the below styles for the ```directory.scss```:
+
+```
+.directory {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+
+```
 
 
 
