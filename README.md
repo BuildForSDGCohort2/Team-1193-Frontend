@@ -1,8 +1,7 @@
-Intelligent Farm project: This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 # Intelligent Farm Tutorial
 ## Introduction
-In this tutorial, we will be creating an e-commerce website called **Intelligent Farm**. The Intelligent Farm allows customers to browse for farm produce and shop for them remotely.The website is built with React Js and Redux Saga on the frontend and Node Js on the backend. , it will be helpful for you to be familiar with Auto Layout before reading this tutorial. This tutorial requires an intermediate knowledge in Javascript, and more importantly the ES6 features. You'll also have to be comfortable working with HTML,CSS and Saas. React version 16.13.1 will be used for this tutorial.
+In this tutorial, we will be creating an e-commerce website called **Intelligent Farm**. The Intelligent Farm allows customers to browse for farm produce and shop for them remotely.The website is built with React Js , it will be helpful for you to be familiar with fundamentals of  React before reading this tutorial. This tutorial requires an intermediate knowledge in Javascript, and more importantly the ES6 features. You'll also have to be comfortable working with HTML,CSS and Saas. React version 16.13.1 will be used for this tutorial.
 ## Getting Started
 In getting started with the project, we're going to use **create-react-app**.
 Setting up a modern react app from scratch is not easy and it makes us lost in the process due to a lot of overwhelming choices like setting up webpack, babel which is a big hassle.The **create-react-app** helps in avoiding those hassles and enables us to focus on the application rather than the configuration.
@@ -426,6 +425,67 @@ In the ```features.scss```, add the following code:
 ```
 
 Let's now create the homepage.
+So navigate back to the src folder and run ```mkdir pages``` to create the pages folder to hold all our pages. Then ```cd pages``` and create a new folder, homepage inside the pages folder, therefore run ```mkdir homepage```. 
+
+Run ```cd homepage``` to get into the homepage folder and create  ```homepage.jsx```  file. So run 
+```touch homepage.jsx```
+
+Inside the ```homepage.jsx``` add the below code:
+
+```
+import React from "react";
+import "./homepage.scss";
+
+import Directory from "../../components/directory/directory";
+import Features from "../../components/features/features";
+
+const Homepage = () => {
+  return (
+    <div className="homepage">
+      <Directory />
+      <Features />
+    </div>
+  );
+};
+
+export default Homepage;
+
+```
+
+Both the Directory and Features components are rendered by the homepage.
+
+Before we see the result, it's time to add the homepage component to the ```App.js``` in our application.
+
+Add this import statement to ```App.js```:
+
+```import Homepage from './pages/homepage/homepage';```
+
+Then add  ```<Homepage/>``` component to the return statement.
+
+Your ```App.js``` should look like this code below:
+```
+import React from 'react';
+import './App.css';
+import Homepage from './pages/homepage/homepage';
+
+function App() {
+  return (
+    <div className="App">
+      <Homepage/>
+    </div>
+  );
+}
+
+export default App;
+
+```
+
+Run the application and see the results.
+
+Congratulations for sticking on upto this far. We've come towards the end of the tutorial, but before I let you go, check out  the [Intelligent Farm repository](https://github.com/BuildForSDGCohort2/Team-1193-Frontend) to get more details on additional featues of the web application not covered in the tutorial.
+
+For any questions, you can reach out to me via [here on linkedin](https://www.linkedin.com/in/vincent-juma-a6a5a5147/) or via email: vinsoncode@gmail.com
+
 
 
 
